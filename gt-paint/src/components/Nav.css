@@ -1,0 +1,60 @@
+.nav-element {
+  background-color: #0c1018;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: 
+    "logo logo empty empty empty empty empty color color color"
+    "logo logo button button button button button color color color";
+  grid-area: nav;
+}
+
+.main-logo {
+  background-color: #6c8dcf;
+  color: gold;
+  grid-area: logo;
+  font-size: 4vw;
+  margin: 0;
+  padding: 0;
+}
+.main-logo p {
+  margin: 0;
+  text-align: center;
+}
+
+.empty-nav {
+  grid-area: empty;
+}
+
+.tool-group {
+  align-items: center;
+  background-color: #677179;
+  display: flex;
+  justify-content: space-evenly;
+  grid-area: button;
+}
+
+.tool-item {
+  background-color: cornsilk;
+  border: 2px solid teal;
+  border-radius: 5px;
+  fill: teal;
+  /* height: 100%; */
+  /* width: 100%; */
+}
+
+.icon {
+  height: 50px;
+  width: 60px;
+}
+
+/* .brush-icon {
+  height: 80%; 
+  width: 100%;
+} */
+
+.color-tool-large {
+  background-color: #ce2a15;
+  grid-area: color;
+}
+

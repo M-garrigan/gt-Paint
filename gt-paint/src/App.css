@@ -1,0 +1,33 @@
+.App {
+  background-color: #4b4b4d;
+  display: grid;  
+  
+  grid-gap: 10px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-areas: 
+    "nav nav nav nav nav nav nav nav nav nav"
+    "nav nav nav nav nav nav nav nav nav nav"
+    "menu menu menu canvas canvas canvas canvas canvas canvas canvas"
+    "menu menu menu canvas canvas canvas canvas canvas canvas canvas"
+    "menu menu menu canvas canvas canvas canvas canvas canvas canvas"
+    "menu menu menu canvas canvas canvas canvas canvas canvas canvas"
+    "menu menu menu canvas canvas canvas canvas canvas canvas canvas"
+    "menu menu menu canvas canvas canvas canvas canvas canvas canvas"
+    "menu menu menu canvas canvas canvas canvas canvas canvas canvas"
+    "tail tail tail tail tail tail tail tail tail tail";
+  height: 90vh;
+  margin: 30px auto;
+  width: 95vw;
+
+}
+
+.App-header {
+  font-size: calc(4vw + 4vh + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
