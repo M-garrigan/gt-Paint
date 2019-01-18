@@ -1,1 +1,4 @@
 gt-paint/node_modules
+gt-paint/coverage
+gt-paint/src/__snapshots__
+gt-paint/src/components/__snapshots__
