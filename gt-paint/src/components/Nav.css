@@ -10,16 +10,15 @@
 }
 
 .main-logo {
-  background-color: #6c8dcf;
-  color: gold;
+  background-color: #0c1018;
+  border: 1px dashed beige;
   grid-area: logo;
-  font-size: 4vw;
-  margin: 0;
-  padding: 0;
+  text-align: center; 
 }
-.main-logo p {
-  margin: 0;
-  text-align: center;
+.main-logo-img {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .empty-nav {
@@ -28,7 +27,7 @@
 
 .tool-group {
   align-items: center;
-  background-color: #677179;
+  background-color: #0c1018;
   display: flex;
   justify-content: space-evenly;
   grid-area: button;
@@ -39,8 +38,6 @@
   border: 2px solid teal;
   border-radius: 5px;
   fill: teal;
-  /* height: 100%; */
-  /* width: 100%; */
 }
 
 .icon {
@@ -48,13 +45,9 @@
   width: 60px;
 }
 
-/* .brush-icon {
-  height: 80%; 
-  width: 100%;
-} */
-
 .color-tool-large {
-  background-color: #ce2a15;
+  background-color: #0c1018;
+  border: 1px dashed beige;
   grid-area: color;
 }
 

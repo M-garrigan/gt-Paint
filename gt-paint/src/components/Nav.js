@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-//import fontawesome from '@fortawesome/fontawesome-free/svgs/regular';
-import './Nav.css';
 
-//console.log('font: ', fontawesome)
+import './Nav.css';
 
 export default class Nav extends Component {
   render() {
     return (
       <div className='nav-element'>
         <div className='main-logo'>
-          <p>gt</p><p>Paint</p>
+          
+          <img 
+            className='main-logo-img'
+            // height="200" width="180" 
+            alt='purle' src='./logo-purple-5.svg' />
         </div>
         <div className='empty-nav'></div>
         <div className='tool-group'>
