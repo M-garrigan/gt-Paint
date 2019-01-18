@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 import App from './App.js';
 import Nav from './components/Nav.js';
@@ -10,8 +11,8 @@ import Tail from './components/Tail.js';
 describe('<App /> ...', () => {
 
   it('renders the root App component', () => {
-    const component = shallow(<App/>);
-    expect(component).toMatchSnapshot();
+    const tree = renderer.create(<App/>).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('App component renders Nav component', () => {

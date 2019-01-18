@@ -1,14 +1,15 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 import Nav from './Nav.js';
 
 describe('<Nav /> ...', () => {
 
   it('renders the Nav component', () => {
-    const component = shallow(<Nav/>);
-    expect(component).toMatchSnapshot();
+    const tree = renderer.create(<Nav/>).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('Select tool icon has class "tool-item-select" by default', () => {
