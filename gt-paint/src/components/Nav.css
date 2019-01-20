@@ -4,14 +4,14 @@
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas: 
-    "logo logo empty empty empty empty empty color color color"
-    "logo logo button button button button button color color color";
+    "logo logo empty empty empty empty empty empty empty empty"
+    "logo logo button button button button button button button button";
   grid-area: nav;
 }
 
 .main-logo {
   background-color: #0c1018;
-  border: 1px dashed beige;
+  
   grid-area: logo;
   text-align: center; 
 }
@@ -51,11 +51,5 @@
 .icon {
   height: 50px;
   width: 60px;
-}
-
-.color-tool-large {
-  background-color: #0c1018;
-  border: 1px dashed beige;
-  grid-area: color;
 }
 

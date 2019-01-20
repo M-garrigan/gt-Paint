@@ -1,12 +1,13 @@
 
 const defaultState = {
-  currentToolSelected: 'Brush'
+  toolIconCurrentlySelected: 'select'
 };
 
 export default (state = defaultState, action) => {
+  
   switch (action.type) {
-    case 'HANDLE_CHANGE_CURRENT_TOOL':
-      return Object.assign({}, state, {currentToolSelected: action.tool});
+    case 'UPDATE_TOOL_ICON_SELECTED':
+      return Object.assign({}, state, {toolIconCurrentlySelected: action.toolName});
     default: 
       return state;
   }

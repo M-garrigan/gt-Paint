@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { handleToolIconCurrentlySelected } from '../actions/navActions.js';
 import './Nav.css';
 
-export default class Nav extends Component {
+class Nav extends Component {
   state = {
     toolSelected: 'select'
   }
 
   handleToolSelected = (event, toolName) => {
+    
     event.preventDefault();
     this.setState({ toolSelected: toolName });
     // call method to update store
+    this.props.handleToolIconCurrentlySelected(toolName)
   }
   render() {
+    
     return (
       <div className='nav-element'>
         <div className='main-logo'>
@@ -129,8 +133,24 @@ export default class Nav extends Component {
           </svg>
           </div>
         </div>
-        <div className='color-tool-large'></div>
+        {/* <div className='color-tool-large'></div> */}
       </div>
     )
   }
-}
+};
+
+const mapStateToProps = state => {
+  return {
+  toolIconCurrentlySelected: state.toolIconCurrentlySelected
+  }
+};
+
+const mapDispatchToProps = dispatch => ({
+  handleToolIconCurrentlySelected: toolName => {
+    dispatch(handleToolIconCurrentlySelected(toolName));
+  }
+});
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(Nav);
