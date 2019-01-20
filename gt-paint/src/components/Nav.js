@@ -19,7 +19,7 @@ export default class Nav extends Component {
           
           <img 
             className='main-logo-img'
-            alt='purle' src='./logo-purple-5.svg' />
+            alt='purle' src='./logo-purple-9.svg' />
         </div>
         <div className='empty-nav'></div>
 

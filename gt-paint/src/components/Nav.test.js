@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 
 import Nav from './Nav.js';
@@ -58,6 +58,23 @@ describe('<Nav /> ...', () => {
     const component = shallow(<Nav/>);
     const pencilTool = component.find('#tool-item-pencil')
     expect(pencilTool.hasClass('tool-item')).toEqual(true);
+  });
+
+  it('Has a default local state.toolSelected to equal "select"', () => {
+    const wrapper = mount(<Nav />);
+    expect(wrapper.state().toolSelected).toEqual('select');
+  });
+
+  it('Brush icon changes class when method handleToolSelected is clicked', () => {
+    const wrapper = mount(<Nav />);
+
+    const brush = wrapper.find('#tool-item-brush');
+    expect(brush.hasClass('tool-item')).toEqual(true);
+
+    brush.simulate('click');
+
+    const brushAfterClick = wrapper.find('#tool-item-brush');
+    expect(brushAfterClick.hasClass('tool-item')).toEqual(false);
   });
 });
 
