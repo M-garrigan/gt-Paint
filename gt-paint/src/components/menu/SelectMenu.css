@@ -1,0 +1,16 @@
+
+.selectMenu-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.selectMenu {
+  margin: 0 auto;
+  width: 90%;
+
+}
+
+.selectMenu > h2 {
+  color: rgb(97, 27, 2);
+  text-align: center;
+}

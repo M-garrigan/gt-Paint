@@ -1,0 +1,22 @@
+
+
+.textMenu-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.textMenu {
+  margin: 0 auto;
+  width: 90%;
+
+}
+
+.textMenu > h2 {
+  color: rgb(97, 27, 2);
+  text-align: center;
+}
+
+input[type=range]:focus {
+  cursor: pointer;
+  outline: none;
+}

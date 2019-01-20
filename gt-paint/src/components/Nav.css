@@ -41,7 +41,7 @@
 }
 
 .tool-item-active {
-  background-color: rgb(248, 233, 174);
+  background-color: rgb(245, 223, 137);
   border: 2px solid teal;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 3px rgb(173, 173, 170);
