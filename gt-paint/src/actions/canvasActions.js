@@ -4,3 +4,10 @@ export const setCanvasDimensions = canvas => {
     canvas: canvas
   }
 };
+
+export const canvasClickCoordinates = canvas => {
+  return {
+    type: 'CANVAS_CLICKED_COORDINATES',
+    canvasClickedCoordinates: canvas
+  }
+};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCanvasDimensions } from '../actions/canvasActions.js';
+import { setCanvasDimensions, canvasClickCoordinates } from '../actions/canvasActions.js';
 import './Canvas.css';
 
 export class Canvas extends Component {
@@ -8,13 +8,17 @@ export class Canvas extends Component {
   state = {
     canvas: {
       height: 0,
-      width: 0
+      width: 0,
+      x: 0, // upper left coordinate for canvas
+      y: 0 // top coordinate for canvas
     }
   }
   
   logCoordinates = event => {
-    console.log('coord: ', event.screenX, event.screenY);
-    console.log('coord: ', event.clientX, event.clientY)
+    this.props.canvasClickCoordinates({
+      x: (Math.round(event.clientX)) - this.state.canvas.x,
+      y: (Math.round(event.clientY)) - this.state.canvas.y
+    })
   }
 
   getCanvasSize = element => {
@@ -22,7 +26,9 @@ export class Canvas extends Component {
       canvas: {
         ...prevState.canvas,
         height: Math.round(element.getBoundingClientRect().height),
-        width: Math.round(element.getBoundingClientRect().width)
+        width: Math.round(element.getBoundingClientRect().width),
+        x: Math.round(element.getBoundingClientRect().x),
+        y: Math.round(element.getBoundingClientRect().y)
       }
     }), () => this.props.setCanvasDimensions(this.state.canvas)
     );
@@ -57,6 +63,9 @@ export class Canvas extends Component {
 const mapDispatchToProps = dispatch => ({
   setCanvasDimensions: canvas => {
     dispatch(setCanvasDimensions(canvas));
+  },
+  canvasClickCoordinates: canvas => {
+    dispatch(canvasClickCoordinates(canvas));
   }
 });
 
