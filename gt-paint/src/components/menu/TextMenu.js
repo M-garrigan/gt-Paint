@@ -43,6 +43,8 @@ export default class TextMenu extends Component {
               {this.state.fontSize}
             </output>
           </div>
+          <p>font-color</p>
+          <p>font-family</p>
         </div>
       </div>
     )

@@ -1,18 +1,18 @@
 
 
-.textMenu-wrapper {
+.pencilMenu-wrapper {
   height: 100%;
   width: 100%;
 }
 
-.textMenu {
+.pencilMenu {
   margin: 0 auto;
   text-align: center;
   width: 90%;
 
 }
 
-.textMenu > h2 {
+.pencilMenu > h2 {
   color: rgb(97, 27, 2);
   text-align: center;
 }
