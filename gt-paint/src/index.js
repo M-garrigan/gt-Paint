@@ -1,20 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import{ Provider } from 'react-redux';
 import { createStore } from 'redux';
 import gtReducer from './reducers/gtReducer.js';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './App.js';
 
-const store = createStore(gtReducer);
+export const store = createStore(gtReducer);
 
-ReactDOM.render(
+export const ProviderApp = <Provider store={store}><App /></Provider>;
+
+export default render(
   <Provider store={store}><App /></Provider>
-  , document.getElementById('root')
+  , document.getElementById('root') || document.createElement('div')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();

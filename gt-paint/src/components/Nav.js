@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { handleToolIconCurrentlySelected } from '../actions/navActions.js';
 import './Nav.css';
 
-class Nav extends Component {
+export class Nav extends Component {
   state = {
     toolSelected: 'select'
   }
@@ -13,7 +13,7 @@ class Nav extends Component {
     event.preventDefault();
     this.setState({ toolSelected: toolName });
     // call method to update store
-    this.props.handleToolIconCurrentlySelected(toolName)
+    this.props.handleToolIconCurrentlySelected(toolName);
   }
   render() {
     
@@ -133,7 +133,6 @@ class Nav extends Component {
           </svg>
           </div>
         </div>
-        {/* <div className='color-tool-large'></div> */}
       </div>
     )
   }
