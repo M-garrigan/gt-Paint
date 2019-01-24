@@ -23,7 +23,7 @@ export class Nav extends Component {
           
           <img 
             className='main-logo-img'
-            alt='purle' src='./logo-purple-9.svg' />
+            alt='purle' src='./arrows_io.svg' />
         </div>
         <div className='empty-nav'></div>
 

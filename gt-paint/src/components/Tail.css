@@ -2,3 +2,8 @@
   background-color: #0c1018;
   grid-area: tail;
 }
+
+.tail-element > h3 {
+  color: cornsilk;
+  padding-left: 20px;
+}
