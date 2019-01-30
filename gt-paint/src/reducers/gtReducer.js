@@ -3,7 +3,9 @@ const defaultState = {
   toolIconCurrentlySelected: 'select',
   canvasDimensions: {
     height: 0,
-    width: 0
+    width: 0,
+    left: 0,
+    top: 0
   },
   canvasClickedCoordinates: {
     x: 0,
