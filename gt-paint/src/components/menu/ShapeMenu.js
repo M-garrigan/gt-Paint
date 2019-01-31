@@ -1,36 +1,68 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setShape, setShapeAttributes } from '../../actions/shapeActions.js';
 import './ShapeMenu.css';
 
-export default class ShapeMenu extends Component {
-  state = {
-    shape: 'square'
-  }
-
-  handleShapeChange = (event, shape) => {
-    event.preventDefault();
-    this.setState({shape});
-    // call action to set store
-  }
+export class ShapeMenu extends Component {
   
-
   render() {
+    console.log('props: ', this.props.shapeAttributes);
+    console.log('props-shape: ', this.props.shape);
     return (
       <div className='shapeMenu-wrapper'>
         <div className='shapeMenu'>
           <h2> Shape </h2>
 
           <div className='shape-group'>
-            <span>Shape</span>
-            <button onClick={event => this.handleShapeChange(event, 'circle')}>Circle</button>
-            <button onClick={event => this.handleShapeChange(event, 'square')}>Square</button>
-            <button onClick={event => this.handleShapeChange(event, 'triangle')}>Triangle</button>
+            <button 
+              className={this.props.shape === 'circle' ? 'shape-item-active' : 'shape-item'}
+              onClick={() => this.props.setShape('circle')}
+            >Circle</button>
+            <button 
+              className={this.props.shape === 'square' ? 'shape-item-active' : 'shape-item'}
+              onClick={() => this.props.setShape('square')}
+            >Square</button>
+            <button 
+              className={this.props.shape === 'triangle' ? 'shape-item-active' : 'shape-item'}
+              onClick={() => this.props.setShape('triangle')}>Triangle</button>
           </div>
-          <p>Stroke</p>
-          <p>Fill</p>
-          <p>Triangle Sides</p>
+          <div className='shape-styles'>
+            <form onChange={event => this.props.setShapeAttributes(event)}>
+              <label htmlFor='size_height'>Height: </label>
+              <input type='number' id='size_height' name='sizeHeight' /><br/>
+              <label htmlFor='size_width'>Width: </label>
+              <input type='number' id='size_width' name='sizeWidth' /><br/>
+              <label htmlFor='fill_color'>Fill: </label>
+              <input type='color' id='fill_color' name='fillColor' /><br/>
+              <label htmlFor='stroke_width'>Stroke Width: </label>
+              <input type='number' id='stroke_width' name='strokeWidth' />
+              <label htmlFor='stroke_color'>Stroke: </label>
+              <input type='color' id='stroke_color' name='strokeColor' />
+            </form>
+          </div>
           
         </div>
       </div>
     )
   }
-}
+};
+
+const mapStateToProps = state => {
+  return {
+  shape: state.shape,
+  shapeAttributes: state.shapeAttributes
+  }
+};
+
+const mapDispatchToProps = dispatch => ({
+  setShape: shape => {
+    dispatch(setShape(shape));
+  },
+  setShapeAttributes: attributes => {
+    dispatch(setShapeAttributes(attributes));
+  }
+});
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(ShapeMenu);

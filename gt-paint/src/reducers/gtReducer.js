@@ -1,6 +1,6 @@
 
 const defaultState = {
-  toolIconCurrentlySelected: 'select',
+  toolIconCurrentlySelected: 'shape',
   canvasDimensions: {
     height: 0,
     width: 0,
@@ -14,6 +14,14 @@ const defaultState = {
   canvasMouseUpCoordinates: {
     x: 0,
     y: 0
+  },
+  shape: 'circle',
+  shapeAttributes: {
+    sizeHeight: 50,
+    sizeWidth: 50,
+    fillColor: '',
+    strokeWidth: 0,
+    strokeColor: ''
   }
 };
 
@@ -33,7 +41,23 @@ export default (state = defaultState, action) => {
       return Object.assign(
         {}, 
         state, 
-        {canvasMouseUpCoordinates: action.canvasMouseUpCoordinates})
+        {canvasMouseUpCoordinates: action.canvasMouseUpCoordinates});
+    case 'SET_SHAPE': 
+        return Object.assign(
+          {},
+          state,
+          {shape: action.shape}
+        );
+    case 'SET_SHAPE_ATTRIBUTES': 
+      const { name, value } = action.event.target;
+      return Object.assign(
+        {},
+        state,
+        {shapeAttributes: {
+          ...state.shapeAttributes,
+          [name]: value
+        }}
+      );
     default: 
       return state;
   }

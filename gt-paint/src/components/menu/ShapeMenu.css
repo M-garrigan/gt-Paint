@@ -9,7 +9,6 @@
   margin: 0 auto;
   text-align: center;
   width: 90%;
-
 }
 
 .shapeMenu > h2 {
@@ -17,7 +16,19 @@
   text-align: center;
 }
 
-input[type=range]:focus {
-  cursor: pointer;
-  outline: none;
+.shape-group {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.shape-item-active {
+  background-color: rgb(245, 223, 137);
+  border-radius: 5px;
+  font-size: 1.5vw;
+  padding: 5px;
+}
+.shape-item {
+  border-radius: 5px;
+  font-size: 1.5vw;
+  padding: 5px;
 }

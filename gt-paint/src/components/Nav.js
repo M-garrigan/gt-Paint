@@ -5,7 +5,7 @@ import './Nav.css';
 
 export class Nav extends Component {
   state = {
-    toolSelected: 'select'
+    toolSelected: 'shape'
   }
 
   handleToolSelected = (event, toolName) => {
