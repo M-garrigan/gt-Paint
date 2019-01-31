@@ -5,9 +5,16 @@ export const setCanvasDimensions = canvas => {
   }
 };
 
-export const canvasClickCoordinates = canvas => {
+export const setMouseDownCoordinates = mouseDown => {
   return {
-    type: 'CANVAS_CLICKED_COORDINATES',
-    canvasClickedCoordinates: canvas
+    type: 'CANVAS_MOUSE_DOWN_COORDINATES',
+    canvasMouseDownCoordinates: mouseDown
+  }
+};
+
+export const setMouseUpCoordinates = mouseUp => {
+  return {
+    type: 'CANVAS_MOUSE_UP_COORDINATES',
+    canvasMouseUpCoordinates: mouseUp
   }
 };

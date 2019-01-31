@@ -10,7 +10,7 @@ export class SelectMenu extends Component {
           <h2> Select </h2>
         </div>
         <p>Canvas Clicked at:</p>
-        <p>{`x: ${this.props.canvasClickedCoordinates.x}  y: ${this.props.canvasClickedCoordinates.y}`}</p>
+        <p>{`x: ${this.props.canvasMouseDownCoordinates.x}  y: ${this.props.canvasMouseDownCoordinates.y}`}</p>
       </div>
     )
   }
@@ -18,7 +18,7 @@ export class SelectMenu extends Component {
 
 const mapStateToProps = state => {
   return {
-    canvasClickedCoordinates: state.canvasClickedCoordinates
+    canvasMouseDownCoordinates: state.canvasMouseDownCoordinates
   }
 };
 

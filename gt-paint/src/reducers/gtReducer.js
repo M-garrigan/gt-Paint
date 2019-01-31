@@ -7,7 +7,11 @@ const defaultState = {
     left: 0,
     top: 0
   },
-  canvasClickedCoordinates: {
+  canvasMouseDownCoordinates: {
+    x: 0,
+    y: 0
+  },
+  canvasMouseUpCoordinates: {
     x: 0,
     y: 0
   }
@@ -20,11 +24,16 @@ export default (state = defaultState, action) => {
       return Object.assign({}, state, {toolIconCurrentlySelected: action.toolName});
     case 'SET_CANVAS_DIMENSIONS':
       return Object.assign({}, state, {canvasDimensions: action.canvas});
-    case 'CANVAS_CLICKED_COORDINATES':
+    case 'CANVAS_MOUSE_DOWN_COORDINATES':
       return Object.assign(
         {}, 
         state, 
-        {canvasClickedCoordinates: action.canvasClickedCoordinates})
+        {canvasMouseDownCoordinates: action.canvasMouseDownCoordinates});
+    case 'CANVAS_MOUSE_UP_COORDINATES':
+      return Object.assign(
+        {}, 
+        state, 
+        {canvasMouseUpCoordinates: action.canvasMouseUpCoordinates})
     default: 
       return state;
   }

@@ -1,35 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCanvasDimensions, canvasClickCoordinates } from '../actions/canvasActions.js';
+import { 
+  setCanvasDimensions, 
+  setMouseDownCoordinates, 
+  setMouseUpCoordinates } from '../actions/canvasActions.js';
 import './Canvas.css';
 
 export class Canvas extends Component {
-  
-  
-  logCoordinates = event => {
-    this.props.canvasClickCoordinates({
+
+  mouseDown = event => {
+    this.props.setMouseDownCoordinates({
       x: (Math.round(event.clientX)) - this.props.canvasDimensions.left,
       y: (Math.round(event.clientY)) - this.props.canvasDimensions.top
     });
-    
-    console.log('canvas: ', this.props.canvasDimensions.left, this.props.canvasDimensions.top)
-    let relX = (Math.round(event.clientX)) - this.props.canvasDimensions.left;
-    let relY = (Math.round(event.clientY)) - this.props.canvasDimensions.top;
-    console.log('rel: ', relX, relY);
-    let ctx = this.canvasRef.getContext('2d');
-    ctx.fillRect(relX, relY, 100, 100);
-    
-    
-  }
-
-  mouseDown = event => {
-    console.log('canvas-mouseDown: ', event.clientX, event.clientY);
-    
   }
 
   mouseUp = event => {
-    console.log('canvas-mouseUp: ', event.clientX, event.clientY)
+    const xUp = (Math.round(event.clientX)) - this.props.canvasDimensions.left;
+    const yUp = (Math.round(event.clientY)) - this.props.canvasDimensions.top;
+
+    this.props.setMouseUpCoordinates({
+      x: xUp,
+      y: yUp
+    });
+    const { x: xDown, y: yDown } = this.props.canvasMouseDownCoordinates; // pull from store
     
+    //this.props.draw({x: xUp, y: yUp});
+
+    if (xDown === xUp && yDown === yUp) {
+      
+      let ctx = this.canvasRef.getContext('2d');
+      
+      ctx.fillRect(xDown, yDown, 50, 50);
+    } else {
+     
+      let ctx = this.canvasRef.getContext('2d');
+      let x = xUp - xDown;
+      let y = yUp - yDown;
+      ctx.fillRect(xDown, yDown, x, y);
+    }
   }
 
   mouseMove = event => {
@@ -38,11 +47,13 @@ export class Canvas extends Component {
   }
 
   getCanvasSize = element => {
+    const { height, width, x, y } = element.getBoundingClientRect();
+
     this.props.setCanvasDimensions({
-      height: Math.round(element.getBoundingClientRect().height),
-      width: Math.round(element.getBoundingClientRect().width),
-      left: Math.round(element.getBoundingClientRect().x),
-      top: Math.round(element.getBoundingClientRect().y)
+      height: Math.round(height),
+      width: Math.round(width),
+      left: Math.round(x),
+      top: Math.round(y)
     });
   }
 
@@ -64,7 +75,6 @@ export class Canvas extends Component {
       >
       <canvas 
         ref={node => this.canvasRef = node}
-        onClick={event => this.logCoordinates(event)}
         onMouseDown={event => this.mouseDown(event)}
         onMouseUp={event => this.mouseUp(event)}
         onMouseMove={event => this.mouseMove(event)}
@@ -80,7 +90,10 @@ export class Canvas extends Component {
 
 const mapStateToProps = state => {
   return {
-  canvasDimensions: state.canvasDimensions
+  canvasDimensions: state.canvasDimensions,
+  canvasMouseDownCoordinates: state.canvasMouseDownCoordinates,
+  canvasMouseUpCoordinates: state.canvasMouseUpCoordinates,
+  toolIconCurrentlySelected: state.toolIconCurrentlySelected
   }
 };
 
@@ -88,8 +101,11 @@ const mapDispatchToProps = dispatch => ({
   setCanvasDimensions: canvas => {
     dispatch(setCanvasDimensions(canvas));
   },
-  canvasClickCoordinates: canvas => {
-    dispatch(canvasClickCoordinates(canvas));
+  setMouseDownCoordinates: mouseDown => {
+    dispatch(setMouseDownCoordinates(mouseDown));
+  },
+  setMouseUpCoordinates: mouseUp => {
+    dispatch(setMouseUpCoordinates(mouseUp))
   }
 });
 
