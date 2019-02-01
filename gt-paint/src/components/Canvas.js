@@ -1,12 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { store } from '../index.js';
 import { 
   setCanvasDimensions, 
   setMouseDownCoordinates, 
-  setMouseUpCoordinates } from '../actions/canvasActions.js';
+  setMouseUpCoordinates} from '../actions/canvasActions.js';
+import { drawSquare } from '../drawHelpers/drawSquare.js';
 import './Canvas.css';
 
 export class Canvas extends Component {
+
+  
+
+  evaluateClickBeforeDraw = () => {
+    let snapshot = store.getState();
+    
+    if (snapshot.toolIconCurrentlySelected === 'shape') {
+      if (snapshot.shape === 'square') {
+        drawSquare(snapshot, this.canvasRef);
+      }
+    }
+    if (snapshot.toolIconCurrentlySelected === 'select') {
+      let ctx = this.canvasRef.getContext('2d');
+      console.log('st: ', store.getState())
+      console.log('isInBound: ', ctx.getImageData(this.props.canvasMouseDownCoordinates.x, this.props.canvasMouseDownCoordinates.y,
+        1,1
+      // this.props.canvasDimensions.height,
+      // this.props.canvasDimensions.width
+      ))
+      console.log('isInBound: ', ctx.isPointInPath(this.props.canvasMouseDownCoordinates.x, this.props.canvasMouseDownCoordinates.y,
+       
+      ))
+    }
+  }
 
   mouseDown = event => {
     this.props.setMouseDownCoordinates({
@@ -23,22 +49,9 @@ export class Canvas extends Component {
       x: xUp,
       y: yUp
     });
-    const { x: xDown, y: yDown } = this.props.canvasMouseDownCoordinates; // pull from store
     
-    //this.props.draw({x: xUp, y: yUp});
-
-    if (xDown === xUp && yDown === yUp) {
-      
-      let ctx = this.canvasRef.getContext('2d');
-      
-      ctx.fillRect(xDown, yDown, 50, 50);
-    } else {
-     
-      let ctx = this.canvasRef.getContext('2d');
-      let x = xUp - xDown;
-      let y = yUp - yDown;
-      ctx.fillRect(xDown, yDown, x, y);
-    }
+    //store.dispatch(thunkMe())
+    this.evaluateClickBeforeDraw();
   }
 
   mouseMove = event => {

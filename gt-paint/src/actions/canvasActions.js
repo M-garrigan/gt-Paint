@@ -1,3 +1,5 @@
+
+
 export const setCanvasDimensions = canvas => {
   return {
     type: 'SET_CANVAS_DIMENSIONS',
@@ -18,3 +20,9 @@ export const setMouseUpCoordinates = mouseUp => {
     canvasMouseUpCoordinates: mouseUp
   }
 };
+
+export const thunkMe = () => {
+  return (dispatch, getState) => {
+    console.log('getS: ', getState());
+  }
+}

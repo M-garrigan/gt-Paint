@@ -19,9 +19,9 @@ const defaultState = {
   shapeAttributes: {
     sizeHeight: 50,
     sizeWidth: 50,
-    fillColor: '',
+    fillColor: '#000000',
     strokeWidth: 0,
-    strokeColor: ''
+    strokeColor: '#ffffff'
   }
 };
 

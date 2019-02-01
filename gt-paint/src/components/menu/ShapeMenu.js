@@ -6,8 +6,7 @@ import './ShapeMenu.css';
 export class ShapeMenu extends Component {
   
   render() {
-    console.log('props: ', this.props.shapeAttributes);
-    console.log('props-shape: ', this.props.shape);
+   
     return (
       <div className='shapeMenu-wrapper'>
         <div className='shapeMenu'>

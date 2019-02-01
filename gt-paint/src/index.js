@@ -1,12 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
 import{ Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import gtReducer from './reducers/gtReducer.js';
 import './index.css';
 import App from './App.js';
 
-export const store = createStore(gtReducer);
+export const store = createStore(
+  gtReducer, 
+  applyMiddleware(thunk)
+);
 
 export const ProviderApp = <Provider store={store}><App /></Provider>;
 
